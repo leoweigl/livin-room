@@ -5,7 +5,9 @@ import lombok.Setter;
 
 @Getter
 public abstract class Person {
+
     private Long id;
+
     @Setter
     private String name;
 

@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Genre {
+
     private String name;
 
     public Genre(String name) {

@@ -1,6 +1,5 @@
 package dev.weigl.livinroom.model;
 
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +7,7 @@ import java.time.LocalDate;
 
 @Getter
 public abstract class MediaItem {
+
     private Long id;
 
     @Setter

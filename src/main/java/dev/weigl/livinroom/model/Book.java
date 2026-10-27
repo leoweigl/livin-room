@@ -8,12 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 public class Book extends MediaItem {
 
+    @Setter
     private String isbn;
+
     private List<Author> authors ;
+
+    @Setter
     private int pages;
+
+    @Setter
     private BookGenre genre;
 
     public Book(String title, String description, LocalDate releaseDate, String isbn, int pages, BookGenre genre) {

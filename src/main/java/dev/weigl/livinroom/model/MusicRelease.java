@@ -8,18 +8,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public abstract class MusicRelease extends MediaItem {
 
-    @Getter
     @Setter
     private Duration duration;
+
     private final List<Artist> artists;
 
-    @Getter
     @Setter
     private ReleaseType type;
 
-    @Getter
     @Setter
     private MusicGenre genre;
 
