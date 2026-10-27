@@ -27,7 +27,7 @@ public abstract class Genre {
         return Objects.hashCode(name.toLowerCase(Locale.ROOT));
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cannot be null or empty");
         }

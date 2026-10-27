@@ -6,23 +6,19 @@ import java.time.Duration;
 import java.time.LocalDate;
 
 @Getter
-public abstract class PlayableItem extends MediaItem {
+public abstract class PlayableItem<G extends Genre, P extends Person> extends MediaItem<G, P> {
     private Duration duration;
 
-    public PlayableItem(String title, String description, LocalDate releaseDate, Duration duration) {
-        super(title, description, releaseDate);
-        this.duration = duration;
+    public PlayableItem(String title) {
+        super(title);
     }
 
     public void setDuration(Duration duration) {
-        if (duration == null) {
-            throw new IllegalArgumentException("duration cannot be null");
+        if (duration == null || !duration.isNegative()) {
+            this.duration = duration;
+            return;
         }
 
-        if (duration.isNegative()) {
-            throw new IllegalArgumentException("duration cannot be negative");
-        }
-
-        this.duration = duration;
+        throw new IllegalArgumentException("duration cannot be negative");
     }
 }
