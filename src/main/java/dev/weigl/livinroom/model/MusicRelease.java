@@ -6,32 +6,32 @@ import lombok.Setter;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
-public abstract class MusicRelease extends MediaItem {
-
-    @Setter
-    private Duration duration;
-
+public class MusicRelease extends PlayableItem {
     private final List<Artist> artists;
 
     @Setter
     private ReleaseType type;
 
     @Setter
+    private MusicFormat musicFormat;
+
+    @Setter
     private MusicGenre genre;
 
-    public MusicRelease(String title, String description, LocalDate releaseDate, ReleaseType type, Duration duration, MusicGenre genre) {
-        super(title, description, releaseDate);
+    public MusicRelease(String title, String description, LocalDate releaseDate, Duration duration, ReleaseType type, MusicGenre genre, MusicFormat musicFormat) {
+        super(title, description, releaseDate, duration);
         this.artists = new ArrayList<>();
         this.type = type;
-        this.duration = duration;
         this.genre = genre;
+        this.musicFormat = musicFormat;
     }
 
-    public void addArtist(Artist artist) {
-        artists.add(artist);
+    public void addArtists(Artist ... artists) {
+        Collections.addAll(this.artists, artists);
     }
 
     public int countArtists() {

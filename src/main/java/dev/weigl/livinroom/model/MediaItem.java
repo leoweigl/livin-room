@@ -20,6 +20,10 @@ public abstract class MediaItem {
     private LocalDate releaseDate;
 
     public MediaItem(String title, String description, LocalDate releaseDate) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("title cannot be null or empty");
+        }
+
         this.title = title;
         this.description = description;
         this.releaseDate = releaseDate;

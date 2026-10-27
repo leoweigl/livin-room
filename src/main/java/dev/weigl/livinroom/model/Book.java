@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -13,9 +14,7 @@ public class Book extends MediaItem {
     @Setter
     private String isbn;
 
-    private List<Author> authors ;
-
-    @Setter
+    private final List<Author> authors ;
     private int pages;
 
     @Setter
@@ -25,12 +24,12 @@ public class Book extends MediaItem {
         super(title, description, releaseDate);
         this.authors = new ArrayList<>();
         this.isbn = isbn;
-        this.pages = pages;
+        setPages(pages);
         this.genre = genre;
     }
 
-    public void addAuthor(Author author) {
-        authors.add(author);
+    public void addAuthors(Author ... authors) {
+        Collections.addAll(this.authors, authors);
     }
 
     public int countAuthors() {
@@ -39,5 +38,13 @@ public class Book extends MediaItem {
 
     public List<Author> getAuthors() {
         return List.copyOf(authors);
+    }
+
+    public void setPages(int pages) {
+        if (pages < 0) {
+            throw new IllegalArgumentException("pages cannot be negative");
+        }
+
+        this.pages = pages;
     }
 }
